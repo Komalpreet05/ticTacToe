@@ -62,7 +62,55 @@ function handleClick(index) {
     }
 }
 
+function checkGameOver() {
+    let answer = "";
+    winningPositions.forEach((position) => {
+        //all three boxes non empty and same value
+        if ((gameGrid[position[0]] !== "" || gameGrid[position[1]] !== "" || gameGrid[position[2]] !== "") && (gameGrid[position[0]] === gameGrid[position[1]]) && (gameGrid[position[1]] === gameGrid[position[2]])) {
+            //check if winner is X
+            if (gameGrid[position[0]] === 'X') {
+                answer = 'X';
+            }
+            else {
+                answer = '0';
+            }
 
+            //disable pointer as we got winner
+            boxes.forEach((box) => {
+                box.style.pointerEvents = "none";
+            })
+            //double check why not for loop
+            //now we know X or 0 winner
+            // for (let i = 0; i <= position.length; i++) {
+            //     boxes[position[i]].classList.add("win");
+            // }
+            boxes[position[0]].classList.add("win");
+            boxes[position[1]].classList.add("win");
+            boxes[position[2]].classList.add("win");
+        }
+    })
+
+    //it means we have a winner
+    if (answer !== "") {
+        gameInfo.innerText = `Winner Player - ${answer}`;
+        newGameBtn.classList.add('active');
+    }
+
+    //when no winner or there is a tie
+    let fillCount = 0;
+    gameGrid.forEach((box) => {
+        if (box !== "") {
+            fillCount++;
+        }
+    });
+
+    //board is filled then fill count will be nine
+    if (fillCount === 9) {
+        gameInfo.innerText = "Game Tied";
+        newGameBtn.classList.add("active");
+    }
+
+}
 
 function swapTurn() {
     if (currentPlayer === "X") {
