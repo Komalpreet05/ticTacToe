@@ -86,7 +86,7 @@
 }
 
 .btn {
-  color: white;
+  color: black;
   position: absolute;
   left: 50%;
   bottom: 3rem;
@@ -96,7 +96,7 @@
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0.5rem 2rem;
   cursor: pointer;
-  /* display: none; */
+  display: none;
 }
 
 .btn.active {
