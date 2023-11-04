@@ -24,9 +24,9 @@ function initGame() {
     boxes.forEach((box, index) => {
         box.innerText = "";
         boxes[index].style.pointerEvents = "all";
-        box.classList = `box box${index + 1}`;
-        //boxes[index].classList.remove("win");
-        //box.classList.remove("win");
+        //box.classList = `box box${index + 1}`; //or
+        boxes[index].classList.remove("win"); //or
+        //box.classList.remove("win"); //or
     })
     newGameBtn.classList.remove("active");
     gameInfo.innerText = `Current player - ${currentPlayer}`;
@@ -81,12 +81,14 @@ function checkGameOver() {
             })
             //double check why not for loop
             //now we know X or 0 winner
-            // for (let i = 0; i <= position.length; i++) {
-            //     boxes[position[i]].classList.add("win");
-            // }
-            boxes[position[0]].classList.add("win");
-            boxes[position[1]].classList.add("win");
-            boxes[position[2]].classList.add("win");
+            for (let i = 0; i < position.length; i++) {
+                boxes[position[i]].classList.add("win");
+            }
+
+            // or 
+            // boxes[position[0]].classList.add("win");
+            // boxes[position[1]].classList.add("win");
+            // boxes[position[2]].classList.add("win");
         }
     })
 
