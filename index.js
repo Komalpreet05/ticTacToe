@@ -28,6 +28,8 @@ function initGame() {
         boxes[index].classList.remove("win"); //or
         //box.classList.remove("win"); //or
     })
+    gameInfo.style.color = "rgb(12 18 145)";
+    gameInfo.style.backgroundColor = "rgba(255, 255, 255, 0.5)";
     newGameBtn.classList.remove("active");
     gameInfo.innerText = `Current player - ${currentPlayer}`;
 
@@ -40,7 +42,7 @@ initGame();
 
 function handleClick(index) {
     if (gameGrid[index] === "") {
-        console.log(gameGrid[index] + index);
+        console.log(gameGrid[index] + index + "line 43");
 
 
         //apply different color to X and 0
@@ -70,9 +72,11 @@ function checkGameOver() {
             //check if winner is X
             if (gameGrid[position[0]] === 'X') {
                 answer = 'X';
+                //gameInfo.style.backgroundColor = "#046204"
             }
             else {
                 answer = '0';
+                //gameInfo.style.backgroundColor = "#046204"
             }
 
             //disable pointer as we got winner
@@ -95,6 +99,8 @@ function checkGameOver() {
     //it means we have a winner
     if (answer !== "") {
         gameInfo.innerText = `Winner Player - ${answer}`;
+        gameInfo.style.backgroundColor = "#046204";
+        gameInfo.style.color = "white";
         newGameBtn.classList.add('active');
     }
 
@@ -108,7 +114,10 @@ function checkGameOver() {
 
     //board is filled then fill count will be nine
     if (fillCount === 9) {
+        gameInfo.style.backgroundColor = "#b40a0a";
+        gameInfo.style.color = "white";
         gameInfo.innerText = "Game Tied";
+
         newGameBtn.classList.add("active");
     }
 
